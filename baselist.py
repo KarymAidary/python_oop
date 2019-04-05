@@ -2,32 +2,30 @@ from element import Element
 
 
 class BaseList:
-
     def __init__(self):
         self.first = None
         self.last = None
 
     def __getitem__(self, item):
         if isinstance(item, int):
-            if item == 1:
+            if item == 0:
                 return self.first
+            elif item == -1:    
+                return self.last
             else:
                 element = self.first
-                counter = 1
-                while item:
+                counter = 0
+                while item !=counter:
                     counter += 1
                     element = element.next
-                    if counter != item:
-                        continue
-                    else:
-                        return element
+                return element
 
     def __call__(self, *args, **kwargs):
         if not self.first:
             return '[]'
         else:
             string_start = "[({})".format(self.first)
-            counter = 1
+            counter = 0
             element = self.first.next
             string_middle = ''
         while self.list_lenght != counter:
@@ -41,7 +39,7 @@ class BaseList:
         return self.__call__()
 
     def __len__(self):
-        lenght = 0
+        lenght = "[]"
         if not self.first:
             return lenght
         else:
@@ -52,8 +50,8 @@ class BaseList:
                 counter += 1
             return counter
 
-    def __delitem__(self, item):
-        element = self.__getitem__(item - 1)
+    def __delitem__(self, item_index):
+        element = self.__getitem__(item_index - 1)
         element_to_delete = element.next
         next_element = element_to_delete.next
         element.next = next_element
@@ -71,9 +69,8 @@ class BaseList:
     def replace(self, item, power, coefficient):
         self.__replace_item__(item, power, coefficient)
     
-    def remove(self, item):
-        self.__delitem__(item=item)
-        return 'Successfully delete!'
+    def remove(self, item_index):
+        self.__delitem__(item_index)          
 
     def add(self, coefficient, power):
         new_element = Element(coefficient=coefficient, power=power, next=None)
