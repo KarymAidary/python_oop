@@ -81,5 +81,5 @@ class BaseList:
             self.last.next = new_element
             self.last = new_element
 
-    def get_element(self, item):
+    def get(self, item):
         return self.__getitem__(item)
