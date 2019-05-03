@@ -32,11 +32,3 @@ class HashTable:
 
 if __name__ == "__main__":
     hash = HashTable()
-    print(hash)
-    # hash.add('piasd', 'aloha')
-    # print('добавлено')
-    # hash.add('aloha', 'xer')
-    # print('добавлено')
-    # hash.add('aloha', 'xer')
-    # print(hash)
-    # print(hash.hash(12))
